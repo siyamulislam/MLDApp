@@ -1,0 +1,8 @@
+run android:
+npx react-native run-android
+
+
+build apk: 
+react-native run-android --variant=release
+
+E:\ReactNative\MLDApp\android\app\build\outputs\apk
