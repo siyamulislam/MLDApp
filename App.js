@@ -49,7 +49,7 @@ const App = () => {
       } else {
         const uri = response?.assets[0]?.uri;
         const path = Platform.OS !== 'ios' ? uri : 'file://' + uri;
-        console.log(path,uri)
+        console.log(path, uri)
         getResult(path, response);
       }
     });
@@ -72,7 +72,7 @@ const App = () => {
       }
     });
   };
-  const manageCamera = async (type) => { 
+  const manageCamera = async (type) => {
     try {
       if (!(await PermissionsService.hasCameraPermission())) {
         return [];
@@ -102,7 +102,7 @@ const App = () => {
     // console.log(formData)
     axios({
       method: 'post',
-      url: 'https://tdd.onrender.com/predict',
+      url: 'https://mld.onrender.com/predict',
       data: formData,
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -182,9 +182,15 @@ const App = () => {
     </View>
   );
 }
-
+const textShadow=  {
+  textShadowColor: 'rgba(0, 0, 0, 0.6)', // Shadow color
+  textShadowOffset: { width: 2, height: 2 }, // Shadow offset
+  textShadowRadius: 5, // Shadow radius
+  
+}
 const styles = StyleSheet.create({
   title: {
+    ...textShadow,
     alignSelf: 'center',
     position: 'absolute',
     top: 10,
@@ -236,18 +242,23 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   space: { marginVertical: 10, marginHorizontal: 10 },
-  labelText: { color: '#FFF', fontSize: 20, },
-  resultText: { fontSize: 32, },
+  labelText: {...textShadow, color: '#FFF', fontSize: 20, // Shadow radius
+  },
+  resultText: { ...textShadow, fontSize: 32, },
   imageIcon: { height: 40, width: 40, tintColor: '#000' },
   emptyText: {
+    ...textShadow,
     position: 'absolute',
     top: height / 1.6,
     alignSelf: 'center',
-    color: '#FFF',
     fontSize: 20,
     maxWidth: '70%',
+    color: '#FFF',
+     // Shadow radius
   },
+ 
 
 });
+
 
 export default App;
