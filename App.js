@@ -36,7 +36,9 @@ const App = () => {
   const [selectedFile, setSelectedFile] = useState();
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    // backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? "#0B0D0E95" : "#0B0D0E85",
+    // backgroundColor: isDarkMode ? "#014401" : "#016000",
   };
   const openCamera = async () => {
     launchCamera(options, async response => {
@@ -131,14 +133,14 @@ const App = () => {
     <View style={[backgroundStyle, styles.outer]}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        backgroundColor={backgroundStyle.backgroundColor}  
       />
       <ImageBackground
-        blurRadius={12}
-        source={require('./assets/img/bg.jpg')}
+        blurRadius={8}
+        source={require('./assets/img/bg5.jpg')}
         style={{ height: height, width: width }}
       />
-      <Text style={styles.title}>{'Mango Disease \nPrediction App'}</Text>
+      <Text style={styles.title}>{'Mango Leaf Disease \nPrediction App'}</Text>
       <TouchableOpacity onPress={clearOutput} style={styles.clearStyle}>
         <Image source={require('./assets/img/clear.png')} style={styles.clearImage} />
       </TouchableOpacity>
@@ -162,7 +164,7 @@ const App = () => {
       )) ||
         (image && <Text style={styles.emptyText}>{label}</Text>) || (
           <Text style={styles.emptyText}>
-            Use below buttons to select a picture of a mango leaf.
+            Select a mango leaf picture from below button.
           </Text>
         )}
       <View style={styles.btn}>
@@ -182,23 +184,28 @@ const App = () => {
     </View>
   );
 }
-const textShadow=  {
+const textShadowTitle=  {
   textShadowColor: 'rgba(0, 0, 0, 0.6)', // Shadow color
   textShadowOffset: { width: 2, height: 2 }, // Shadow offset
   textShadowRadius: 5, // Shadow radius
-  
+}
+const textShadow=  {
+  textShadowColor: 'rgba(0, 0, 0, 0.6)', // Shadow color
+  textShadowOffset: { width: 1, height: 1 }, // Shadow offset
+  textShadowRadius: 3, // Shadow radius
 }
 const styles = StyleSheet.create({
   title: {
-    ...textShadow,
+    ...textShadowTitle,
     alignSelf: 'center',
+    textAlign:'center',
     position: 'absolute',
     top: 10,
-    fontSize: 35,
-    fontWeight: '700',
-    color: 'green',
+    fontSize: 30,
+    fontWeight: '500',
+    color: '#eef1F6',
   },
-  clearImage: { height: 40, width: 40, tintColor: '#555' },
+  clearImage: { height: 40, width: 40, tintColor: '#9fA4A0' },
   mainOuter: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -251,6 +258,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: height / 1.6,
     alignSelf: 'center',
+    textAlign: 'center',
     fontSize: 20,
     maxWidth: '70%',
     color: '#FFF',
